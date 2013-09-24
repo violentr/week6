@@ -1,0 +1,25 @@
+<html>
+		<head>
+			<title>Test environment</title>
+		</head>
+	<body>
+		<h1>Welcome to Links</h1>
+		<h3>MakersAcademy</h3>
+		<section>
+			<ul>
+				<% @links.each do |link| %>
+				<li><a href="<%=link.url%>"><%=link.title%></a></li>
+				<% end %>
+			</ul>
+		</section>
+			<div id="new-link">
+				<form action="/links" method ="post">
+					Url:<input type="text" name="url">
+					Title:<input type="text" name="title">
+					Tag:<input type="text" name="tags">
+					<input type="submit" value="Add link">
+					
+				</form>
+			</div>
+	</body>
+</html>
