@@ -6,8 +6,10 @@ feature "Adding tags to links" do
 		visit("/")
 		add_link("http://google.co.uk","Google",['search','google'])
 		link =Link.first
-		expect(link.tags.map(&:text)).to include("education")
-		expect(link.tags.map(&:text)).to include("ruby")
+	# 	expect(link.tags).to include("search")
+	# 	expect(link.tags).to include("google")
+	expect(link.tags.map(&:text)).to include("search")
+	expect(link.tags.map(&:text)).to include("google")
 	end
 end
 

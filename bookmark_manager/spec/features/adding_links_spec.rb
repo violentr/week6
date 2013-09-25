@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 
-
 feature "User adds a new link" do
 	scenario "When browsing the home page" do
 		expect(Link.count).to eq(0)

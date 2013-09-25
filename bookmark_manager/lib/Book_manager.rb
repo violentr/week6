@@ -22,19 +22,28 @@ class BookManager < Sinatra::Base #never do underscore in class names
 
   get '/' do
   	@links = Link.all
-    
+  	
      erb :index
   end
 
- post '/links' do
- 	web_prefix ='http://'
-  url =web_prefix + params['url']
-  title =params['title']
-  tags = params['tags'].split(" ").map{|tag| Tag.new(:text => tag)}
-  Link.create(:url => url, :title => title, :tags => tags)
-  redirect('/')
+  get '/tags/:text' do
+	tag = Tag.first(:text =>params[:text])
+     puts tag.links.inspect
+	@links = tag ? tag.links : []
+	erb :index
+  end
 
-  erb :index
+  post '/links' do
+ 	web_prefix ='http://'
+  	url =web_prefix + params['url']
+  	title =params['title']
+
+  	tags = params['tags'].split(" ").map{|tag| Tag.new(:text => tag)}
+  	#puts tags
+	Link.create(:url => url, :title => title, :tags => tags)
+	redirect('/')
+
+	erb :index
 end
  
   # start the server if ruby file executed directly
