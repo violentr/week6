@@ -11,6 +11,7 @@ feature "User browses the list of links" do
     	visit "/"
     	expect(page).to have_content("MakersAcademy")
   	end
+
   	before(:each) {
     Link.create(:url => "http://www.makersacademy.com",
                 :title => "MakersAcademy", 
@@ -26,7 +27,6 @@ feature "User browses the list of links" do
   	scenario "filtered by tag" do
   		visit'/tags/search'
   		expect(page).not_to have_content("MakersAcademy")
-  		expect(page).not_to have_content("Google")
-  		expect(page).not_to have_content("MSN")
-  	end
+  		expect(page).to have_content("Google")
+  		end
 end

@@ -28,7 +28,7 @@ class BookManager < Sinatra::Base #never do underscore in class names
 
   get '/tags/:text' do
 	tag = Tag.first(:text =>params[:text])
-     puts tag.links.inspect
+    # puts tag.links.inspect
 	@links = tag ? tag.links : []
 	erb :index
   end
