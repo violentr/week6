@@ -16,8 +16,12 @@ require_relative '../lib/Book_manager'
 require 'database_cleaner'
 require 'capybara/rspec'
 require './lib/tag'
+require './lib/user'
+require './lib/link'
 
 
+
+Capybara.app = BookManager
 
 RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true

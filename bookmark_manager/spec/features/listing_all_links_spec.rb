@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'link'
+
 
 Capybara.app = BookManager #must be declared your App.
 
